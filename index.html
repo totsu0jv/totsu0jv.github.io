@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>totsu.</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/3caf43e318.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        a { 
+            color: inherit;
+            text-decoration: none;
+        } 
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .profile-card {
+            background: #111;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+        }
+        .profile-card img {
+            width: 150px;
+            /* height: 150px; */
+            border-radius: 50%;
+            border: 3px solid #1c1c1c;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+
+        }
+
+        .profile-card img:hover {
+            scale: 1.05
+        }
+
+        .profile-card .project:hover {
+            scale: 1.05
+        }
+        .profile-card h1 {
+            margin: 10px 0;
+            font-size: 1.8em;
+            margin-bottom: 0;
+        }
+
+        .profile-card h2 {
+            font-family:monospace;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .username {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 1.0em;
+            opacity: 0.7;
+            margin-bottom: 15px;
+            margin-top: 0;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .social-links a {
+            display: inline-block;
+            background: #222;
+            padding: 15px;
+            border-radius: 15px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            background: #444;
+            scale: 1.25
+        }
+        .section-title {
+            font-size: 1.8em;
+            margin: 20px 0 0;
+        }
+        .projects {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .project {
+            background: #111;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+            width: 200px;
+            height: 300px;
+            transition: 0.3s;
+        }
+        .project img {
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .new-section {
+        	/* display: grid; */
+        	text-align: center;
+        	/* justify-content: center; */
+        	/* margin-top: 30px; */
+        	width: 50%;
+        	left: 25%;
+        	position: relative;
+        }
+        .new-section a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.2em;
+            background: #222;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .new-section a:hover {
+            background: #444;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-card">
+            <img src="https://avatars.githubusercontent.com/u/71902025" alt="Profile Picture">
+            <h1>totsu</h1>
+            <p class="username">@totsu0jv</p>
+
+            <h2>Keep your eye on the doughnut, not on the hole.<br><i class="username">David Lynch, Catching the Big Fish</i></h2>
+            <div class="social-links">
+                <a href="https://youtube.com/totsu0jv" class="fa-brands fa-youtube"></a>
+                <a href="https://twitch.tv/totsu" class="fa-brands fa-twitch"></a>
+                <a href="https://tiktok.com/@totsu0jv" class="fa-brands fa-tiktok"></a>
+                <a href="https://twitter.com/totsu0jv" class="fa-brands fa-x-twitter"></a>
+                <a href="https://github.com/totsu0jv" class="fa-brands fa-github"></a>
+                <a href="https://steamcommunity.com/id/totsu0jv/" class="fa-brands fa-steam"></a>
+            </div>
+
+            <div id="lastfm-widget">
+                <div id="widget">&#127911; <span id="song">&#8987;</span></div>
+                <div>
+                    <p class="username"><small>latest played song.</small></p>
+                </div>
+            </div>
+            <script type="text/javascript">
+                let user = 'totsu0jv';
+                let url = 'https://lastfm-last-played.biancarosa.com.br/' + user + '/latest-song';
+                let song = document.querySelector('#song');
+                fetch(url)
+                    .then(function (response) {
+                        return response.json()
+                    }).then(function (json) {
+                        song.innerHTML = json['track']['artist']['#text'] + ' - ' + json['track']['name'];
+                    });
+            </script>
+        
+            <section id="portfolio">
+                <h3 class="section-title">some of my work.</h3>
+                <div class="projects">
+                    <!-- <a href="https://deadyen.com"> -->
+                        <div class="project">
+                            <h3>deadyen.</h3>
+                            <h2>Scripts and assets for Cfx.re projects.<br><h4 style="color: rgb(97, 97, 185); text-decoration: underline;"><a href="https://youtu.be/nOBGuzgDxl4">deadyen_pizzajob</a></h4><h4 style="color: rgb(97, 97, 185); text-decoration: underline;"><a href="https://youtu.be/2jZjLNM5izA">deadyen_emotes</a></h4><h2>and more.</h2>
+                        </div>
+                    <!-- </a> -->
+                    <div class="project">
+                        <h3>gamedev.</h3>
+                        <h2>A few simple indie games made using Godot.<br><h4 style="color: rgb(97, 97, 185); text-decoration: underline;"><a href="https://totsu0jv.itch.io/farkle-inferno">Farkle Inferno</a></h4><h4 style="color: rgb(97, 97, 185); text-decoration: underline;"><a href="https://totsu0jv.itch.io/ticket-to-hell">Ticket to Hell</a></h4><h2>and more.</h2>
+                    </div>
+                    <div class="project">
+                        <h3>content creation.</h3>
+                        <h2>Mainly using Rockstar's RAGE for my projects and clients.<br><h4 style="color: rgb(97, 97, 185); text-decoration: underline;"><a href="https://youtu.be/XNZUMpUrwsc">teaser for a WIP project</a></h4><h2><br><br>and more.</h2>
+                    </div>
+                </div>
+            </section>
+
+            <!-- <section class="new-section">
+                <h3 class="section-title">blog.</h2>
+                <p><a href="blog.html">Read My Blog</a></p>
+            </section> -->
+
+            <section class="new-section">
+                <h3 class="section-title">business inquiries.</h2>
+                <p class="username">Please contact me through my e-mail with the button below or through my social media.</p>
+                <p><a class="fa-regular fa-envelope" href="mailto:totsu@deadyen.com" style="font-display: normal;"> <i class="username">Email Me</i></a></p>
+                <h2><i class="username">If you do not receive a response from me within a week, it is safe to assume that I am not interested. Thank you for understanding.</i></h2>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
